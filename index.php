@@ -1,7 +1,11 @@
 <?php
 
 // PHP 
-phpinfo();
+//phpinfo();
+
+
+header("Location: layout.html");
+exit;
 
 
 ?>

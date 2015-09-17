@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Erregistroa</title>
+		
+		
+		<script type="text/javascript">
+			function ikusBalioak(){
+				
+				var sAux="";
+				var frm=document.getElementById("erregistro");
+				for(i=1;i<frm.elements.length;i++){
+					sAux += "IZENA: " + frm.elements[i].name + "";
+					sAux += "BALIOA: " + frm.elements[i].value + "\n";
+				}
+				alert(sAux);
+			}
+			
+			</script>
+	</head>
+	<body>
+		<form id="erregistro" name="erregistro" onsubmit="ikusBalioak()">
+			
+			<table>
+				<tr><td align="right">Izen abizenak:</td><td><input type="text" name="izena" id="izena" size="30"/></td></tr>
+				<tr><td align="right">Argazkia:</td><td><input type="file" name="argazkia" id="argazkia" size="30"/></td></tr>
+				<tr><td align="right">Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30"/></td></tr>
+				<tr><td align="right">Pasahitza:</td><td><input type="password" name="pasahitza" id="pasahitza" size="30"/></td></tr>
+				<tr><td align="right">Telefonoa:</td><td><input type="text" name="telefonoa" id="telefonoa" size="30"/></td></tr>
+				<tr><td align="right">Espezialitatea:</td><td>   
+					<select name="Espezialitatea">    
+						<option value="software" selected="selected">Software Ingenieritza</option>
+						<option value="hardware">Konputagailuen Ingenieritza</option>
+						<option value="konputazioa">Konputazioa</option>
+						</select>
+				</td></tr>
+				<tr><td colspan="2" align="right">Interesa duzun teknologiak eta herremintak:</td></tr>
+				<tr>
+					<td></td>
+				<td  align=left>
+					
+					<input type="checkbox" name="interesa" value="PHP" />PHP<br />
+					<input type="checkbox" name="interesa" value="CSS" />CSS<br />
+					<input type="checkbox" name="interesa" value="HTML" />HTML<br />
+			
+				</td>
+				</tr>
+				<tr> <td colspan="2">
+					
+								<div align="center">
+				<input type="submit" value="Bidali" onclick="window.close()" />
+				<input type="reset" value="Ezabatu" />
+			</div>
+			
+				</td></tr>
+			</table>
+
+		</form>
+	</body>
+</html>
