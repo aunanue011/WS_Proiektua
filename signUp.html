@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Erregistroa</title>
+        <link rel='stylesheet' type='text/css' href='stylesPWS/css.css' />
 		
 		
 		<script type="text/javascript">
@@ -16,16 +17,54 @@
 			}
 			
 			</script>
-	</head>
-	<body>
-		<form id="erregistro" name="erregistro" onsubmit="ikusBalioak()">
+            <!--<script>
+            function funcion(){
+				var nombre = document.getElementById('nombre');
+				var telefono = document.getElementById('telefono');
+				var email = document.getElementById('email');
+				var re = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$/;
+				var num = /^([0-9])*$/;
 			
-			<table>
+				if (nombre.value == ""){
+						alert("Mesedez sartu zure izena eta abizenak");
+				}else if(telefono.value == ""){
+						alert("Mesedez telefono bat sartu");
+						document.formulario.telefono.focus();
+				}else if(!num.exec(telefono.value)){
+						alert("Telefono zenbaki okerra, mesedez zenbakiak bakarrik sar itzazu");
+						document.formulario.telefono.focus();
+				}else if(telefono.value.length <= 8){
+						alert("Telefono zenbaki okerra, zenbakiak faltan");
+						document.formulario.telefono.focus();
+				}else if(!num.exec(edad.value)){
+						alert("Edad incorrecta");
+						document.formulario.edad.focus();
+				}else if(email.value == ""){
+						alert("Mesedez, emaila sar ezazu");
+						document.formulario.email.focus();
+				}else if(!re.exec(email.value)){ 
+						alert("Sartutako emaila ez EHUko ikasle batena");
+						document.formulario.email.focus();
+				}else{
+						document.formulario.submit();
+				}}
+			</script>-->
+	</head>
+	
+    <body>
+    <div id="banner">
+    </div>
+    
+    <div class="edukiera">
+		<form id="erregistro" name="erregistro" onSubmit="ikusBalioak()">
+			
+			<table id="taula" width="300" border="0" cellspacing="20">
+            	<th bgcolor="#330000" colspan="2">Izena Eman</th>
 				<tr><td align="right">Izen abizenak:</td><td><input type="text" name="izena" id="izena" size="30"/></td></tr>
 				<tr><td align="right">Argazkia:</td><td><input type="file" name="argazkia" id="argazkia" size="30"/></td></tr>
 				<tr><td align="right">Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30"/></td></tr>
 				<tr><td align="right">Pasahitza:</td><td><input type="password" name="pasahitza" id="pasahitza" size="30"/></td></tr>
-				<tr><td align="right">Telefonoa:</td><td><input type="text" name="telefonoa" id="telefonoa" size="30"/></td></tr>
+				<tr><td align="right">Telefonoa:</td><td><input type="tel" name="telefonoa" id="telefonoa" size="30"/></td></tr>
 				<tr><td align="right">Espezialitatea:</td><td>   
 					<select name="Espezialitatea">    
 						<option value="software" selected="selected">Software Ingenieritza</option>
@@ -47,7 +86,7 @@
 				<tr> <td colspan="2">
 					
 								<div align="center">
-				<input type="submit" value="Bidali" />
+				<input type="submit" value="Bidali" onClick="window.close()" />
 				<input type="reset" value="Ezabatu" />
 			</div>
 			
@@ -55,5 +94,13 @@
 			</table>
 
 		</form>
-	</body>
+        </div>
+       
+        <div class="atzera">
+        	<a href="layout.html"><img width="50px" height="50px" src="irudiak/atzera.png" alt="Atzera Irudia" ></a>
+    	</div>
+    
+    	<div id="banner"></div>
+	
+    </body>
 </html>
