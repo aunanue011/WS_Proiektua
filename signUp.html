@@ -9,12 +9,38 @@
 				
 				var sAux="";
 				var frm=document.getElementById("erregistro");
-				for(i=1;i<frm.elements.length;i++){
+				for(i=0;i<frm.elements.length;i++){
 					sAux += "IZENA: " + frm.elements[i].name + "";
 					sAux += "BALIOA: " + frm.elements[i].value + "\n";
 				}
 				alert(sAux);
 			}
+			
+			function postaEgiaztatu() {
+			var postaJasotakoa= document.getElementById("posta").value;
+			adierazpenErregularra = new RegExp(/^[a-z]*[0-9]{3}\@ikasle\.ehu\.es$/);
+			if (adierazpenErregularra.test(postaJasotakoa))
+null;
+			else
+				alert('"' + postaJasotakoa + '"  posta, EZ DA ehu-ko ikasle baten posta')
+		}
+		
+		
+		function pasahitzaKonprobatu(){
+					var pass1= document.getElementById("pasahitza");
+					var pass2= document.getElementById("pasahitza2");
+					var mezua = document.getElementById('konfirmatu');
+	if(pass1.value == pass2.value){
+        pass2.style.backgroundColor = "#66cc66";
+        mezua.style.color = "#66cc66";
+        mezua.innerHTML = "Pasahitzek bat egiten dute"
+    }else{
+       
+        pass2.style.backgroundColor = "#ff6666";
+        mezua.style.color = "#ff6666";
+        mezua.innerHTML = "Pasahitzek EZ dute bat egiten"
+    }
+		}
 			
 			</script>
             <!--<script>
@@ -60,10 +86,13 @@
 			
 			<table id="taula" width="300" border="0" cellspacing="20">
             	<th bgcolor="#330000" colspan="2">Izena Eman</th>
-				<tr><td align="right">Izen abizenak:</td><td><input type="text" name="izena" id="izena" size="30"/></td></tr>
+				<tr><td align="right">Izen abizenak:</td><td><input type="text" name="izena" id="izena" size="30" required/></td></tr>
 				<tr><td align="right">Argazkia:</td><td><input type="file" name="argazkia" id="argazkia" size="30"/></td></tr>
-				<tr><td align="right">Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30"/></td></tr>
-				<tr><td align="right">Pasahitza:</td><td><input type="password" name="pasahitza" id="pasahitza" size="30"/></td></tr>
+				<tr><td align="right">Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30" required placeholder="ADB:ikasle123@ikasle.ehu.es" /></td></tr>
+				<tr><td align="right">Pasahitza:</td><td><input type="password" name="pasahitza" id="pasahitza" size="30" required/></td></tr>
+				<tr><td align="right">Pasahitza:</td><td><input type="password" name="pasahitza2" id="pasahitza2" size="30" required onkeyup="pasahitzaKonprobatu(); return false;"/><br /><span id="konfirmatu" class="konfirmatu"></span>
+</td></tr>
+
 				<tr><td align="right">Telefonoa:</td><td><input type="tel" name="telefonoa" id="telefonoa" size="30"/></td></tr>
 				<tr><td align="right">Espezialitatea:</td><td>   
 					<select name="Espezialitatea">    
@@ -86,8 +115,8 @@
 				<tr> <td colspan="2">
 					
 								<div align="center">
-				<input type="submit" value="Bidali" onClick="window.close()" />
-				<input type="reset" value="Ezabatu" />
+				<input type="submit" value="Bidali" />
+			<!--	<input type="reset" value="Ezabatu" />-->
 			</div>
 			
 				</td></tr>
