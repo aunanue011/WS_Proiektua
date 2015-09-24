@@ -18,11 +18,19 @@
 			
 			function postaEgiaztatu() {
 			var postaJasotakoa= document.getElementById("posta").value;
-			adierazpenErregularra = new RegExp(/^[a-z]*[0-9]{3}\@ikasle\.ehu\.es|\.eus$/);
-			if (adierazpenErregularra.test(postaJasotakoa))
-null;
-			else
-				alert('"' + postaJasotakoa + '"  posta, EZ DA ehu-ko ikasle baten posta')
+			adierazpenErregularra = new RegExp(/^[a-z]*[0-9]{3}\@ikasle\.ehu+(\.es|\.eus)$/);
+			if (adierazpenErregularra.test(postaJasotakoa)){
+			
+			document.getElementById("posta").style.backgroundColor = "#66cc66";
+
+return true;
+}
+			else{
+			
+			//	alert('"' + postaJasotakoa + '"  posta, EZ DA ehu-ko ikasle baten posta') 
+			document.getElementById("posta").style.backgroundColor = "#ff6666";
+			return false;
+				}
 		}
 		
 		
@@ -34,21 +42,25 @@ null;
         pass2.style.backgroundColor = "#66cc66";
         mezua.style.color = "#66cc66";
         mezua.innerHTML = "Pasahitzek bat egiten dute"
+        return true;
     }else{
        
         pass2.style.backgroundColor = "#ff6666";
         mezua.style.color = "#ff6666";
         mezua.innerHTML = "Pasahitzek EZ dute bat egiten";
+        return false;
     }
 
 		}
 				function telefonoaKonprobatu(){
-		adierazpenErregularra = new RegExp(/[0-9]{9}/);
+		adierazpenErregularra = new RegExp(/^[0-9]{9}$/);
 		var elementu = document.getElementById("telefonoa");
 		if(adierazpenErregularra.test(elementu.value)){
 			elementu.style.backgroundColor = "#66cc66";
+			return true;
 		}else{
 			elementu.style.backgroundColor = "#ff6666";
+			return false;
 		}
 	}
 	function pasahitzaLuzera(){
@@ -61,12 +73,27 @@ null;
 	}
 	
 	function izenaKonrprobatu(){
-		var elementu = document.getElementById("izena");
-		var adierazpenErregularra= new RegExp(/^[A-z]+\s+[A-z]+\s+[A-z]*$/);
-		if (adierazpenErregularra.test(elementu.value)){
-			alert("jjj");
+		var IzenaElementu= document.getElementById("izena");
+		var adierazpenErregularra= new RegExp(/^[A-z]+\s+[A-z]+\s+[A-z].*[A-z]$/);
+		if (adierazpenErregularra.test(IzenaElementu.value)){
+			//alert("jjj");
+			IzenaElementu.style.backgroundColor = "#66cc66";
+			return true;
+		}else{
+			IzenaElementu.style.backgroundColor = "#ff6666";
+			return false;
 		}
 	}
+	
+	
+	function guztiak(){
+		izenaKonrprobatu();
+		postaEgiaztatu();
+		pasahitzaKonprobatu();
+		telefonoaKonprobatu();
+	}
+	
+	
     </script>
 
 	</head>
@@ -76,18 +103,19 @@ null;
     </div>
     
     <div class="edukiera">
-		<form method="post" action="igorriSingUp.php" id="erregistro" name="erregistro" onSubmit="ikusBalioak()">
-			
+		<!--<form method="post" action="igorriSingUp.php" id="erregistro" name="erregistro" onSubmit="guztiak()">-->
+		<form method="post" id="erregistro" name="erregistro" onSubmit="guztiak(); return false;">
+
 			<table id="taula" width="300" border="0" cellspacing="20">
             	<th bgcolor="#330000" colspan="2">Izena Eman</th>
-				<tr><td align="right">*Izen abizenak:</td><td><input type="text" name="izena" id="izena" size="30" required onBlur="izenaKonrprobatu()"/></td></tr>
+				<tr><td align="right">*Izen abizenak:</td><td><input type="text" name="izena" id="izena" size="30" required/></td></tr>
 				<tr><td align="right">Argazkia:</td><td><input type="file" name="argazkia" id="argazkia" size="30"/></td></tr>
-				<tr><td align="right">*Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30" required placeholder="ADB:ikasle123@ikasle.ehu.es" onBlur="postaEgiaztatu()"/></td></tr>
+				<tr><td align="right">*Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30" required placeholder="ADB:ikasle123@ikasle.ehu.es" /></td></tr>
 				<tr><td align="right">*Pasahitza:</td><td><input type="password" name="pasahitza" id="pasahitza" size="30" required onBlur="pasahitzaLuzera()"/></td></tr>
-				<tr><td align="right">*Pasahitza konfirmatu:</td><td><input type="password" name="pasahitza2" id="pasahitza2" size="30" required onBlur="pasahitzaKonprobatu(); return false;"/><br /><span id="konfirmatu" class="konfirmatu"></span>
+				<tr><td align="right">*Pasahitza konfirmatu:</td><td><input type="password" name="pasahitza2" id="pasahitza2" size="30" required/><br /><span id="konfirmatu" class="konfirmatu"></span>
 </td></tr>
 
-				<tr><td align="right">*Telefonoa:</td><td><input type="tel" name="telefonoa" id="telefonoa" size="30" required onBlur="telefonoaKonprobatu()"/></td></tr>
+				<tr><td align="right">*Telefonoa:</td><td><input type="tel" name="telefonoa" id="telefonoa" size="30" required/></td></tr>
 				<tr><td align="right">*Espezialitatea:</td><td>   
 					<select name="Espezialitatea" >    
 						<option value="software">Software Ingenieritza</option>
@@ -128,7 +156,7 @@ null;
         	<a href="layout.html"><img width="50px" height="50px" src="irudiak/atzera.png" alt="Atzera Irudia" ></a>
     	</div>
     
-    	<div id="banner"></div>
+    	<div id="bannerOina"></div>
 	
     </body>
 </html>
