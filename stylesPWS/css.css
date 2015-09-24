@@ -88,6 +88,9 @@ body {
 	width:800px;
 	height:auto;
 }
+textarea {
+    resize: none;
+}
 #taula td {
 	padding-left:20px;
 	padding-right:20px;

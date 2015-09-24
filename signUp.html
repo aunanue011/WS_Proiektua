@@ -18,7 +18,7 @@
 			
 			function postaEgiaztatu() {
 			var postaJasotakoa= document.getElementById("posta").value;
-			adierazpenErregularra = new RegExp(/^[a-z]*[0-9]{3}\@ikasle\.ehu\.es$/);
+			adierazpenErregularra = new RegExp(/^[a-z]*[0-9]{3}\@ikasle\.ehu\.es|\.eus$/);
 			if (adierazpenErregularra.test(postaJasotakoa))
 null;
 			else
@@ -30,7 +30,7 @@ null;
 					var pass1= document.getElementById("pasahitza");
 					var pass2= document.getElementById("pasahitza2");
 					var mezua = document.getElementById('konfirmatu');
-	if(pass1.value == pass2.value){
+	if(pass1.value == pass2.value && pass1.value.length>="6"){
         pass2.style.backgroundColor = "#66cc66";
         mezua.style.color = "#66cc66";
         mezua.innerHTML = "Pasahitzek bat egiten dute"
@@ -38,43 +38,37 @@ null;
        
         pass2.style.backgroundColor = "#ff6666";
         mezua.style.color = "#ff6666";
-        mezua.innerHTML = "Pasahitzek EZ dute bat egiten"
+        mezua.innerHTML = "Pasahitzek EZ dute bat egiten";
     }
+
 		}
-			
-			</script>
-            <!--<script>
-            function funcion(){
-				var nombre = document.getElementById('nombre');
-				var telefono = document.getElementById('telefono');
-				var email = document.getElementById('email');
-				var re = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$/;
-				var num = /^([0-9])*$/;
-			
-				if (nombre.value == ""){
-						alert("Mesedez sartu zure izena eta abizenak");
-				}else if(telefono.value == ""){
-						alert("Mesedez telefono bat sartu");
-						document.formulario.telefono.focus();
-				}else if(!num.exec(telefono.value)){
-						alert("Telefono zenbaki okerra, mesedez zenbakiak bakarrik sar itzazu");
-						document.formulario.telefono.focus();
-				}else if(telefono.value.length <= 8){
-						alert("Telefono zenbaki okerra, zenbakiak faltan");
-						document.formulario.telefono.focus();
-				}else if(!num.exec(edad.value)){
-						alert("Edad incorrecta");
-						document.formulario.edad.focus();
-				}else if(email.value == ""){
-						alert("Mesedez, emaila sar ezazu");
-						document.formulario.email.focus();
-				}else if(!re.exec(email.value)){ 
-						alert("Sartutako emaila ez EHUko ikasle batena");
-						document.formulario.email.focus();
-				}else{
-						document.formulario.submit();
-				}}
-			</script>-->
+				function telefonoaKonprobatu(){
+		adierazpenErregularra = new RegExp(/[0-9]{9}/);
+		var elementu = document.getElementById("telefonoa");
+		if(adierazpenErregularra.test(elementu.value)){
+			elementu.style.backgroundColor = "#66cc66";
+		}else{
+			elementu.style.backgroundColor = "#ff6666";
+		}
+	}
+	function pasahitzaLuzera(){
+		var elementu = document.getElementById("pasahitza");
+		var pass1= document.getElementById("pasahitza");
+		if(pass1.value.length<"6"){
+			alert("Pasahitza gutxienez 6 karakterekoa izan behar du.");
+		}
+		
+	}
+	
+	function izenaKonrprobatu(){
+		var elementu = document.getElementById("izena");
+		var adierazpenErregularra= new RegExp(/^[A-z]+\s+[A-z]+\s+[A-z]*$/);
+		if (adierazpenErregularra.test(elementu.value)){
+			alert("jjj");
+		}
+	}
+    </script>
+
 	</head>
 	
     <body>
@@ -82,23 +76,25 @@ null;
     </div>
     
     <div class="edukiera">
-		<form id="erregistro" name="erregistro" onSubmit="ikusBalioak()">
+		<form method="post" action="igorriSingUp.php" id="erregistro" name="erregistro" onSubmit="ikusBalioak()">
 			
 			<table id="taula" width="300" border="0" cellspacing="20">
             	<th bgcolor="#330000" colspan="2">Izena Eman</th>
-				<tr><td align="right">Izen abizenak:</td><td><input type="text" name="izena" id="izena" size="30" required/></td></tr>
+				<tr><td align="right">*Izen abizenak:</td><td><input type="text" name="izena" id="izena" size="30" required onBlur="izenaKonrprobatu()"/></td></tr>
 				<tr><td align="right">Argazkia:</td><td><input type="file" name="argazkia" id="argazkia" size="30"/></td></tr>
-				<tr><td align="right">Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30" required placeholder="ADB:ikasle123@ikasle.ehu.es" /></td></tr>
-				<tr><td align="right">Pasahitza:</td><td><input type="password" name="pasahitza" id="pasahitza" size="30" required/></td></tr>
-				<tr><td align="right">Pasahitza:</td><td><input type="password" name="pasahitza2" id="pasahitza2" size="30" required onkeyup="pasahitzaKonprobatu(); return false;"/><br /><span id="konfirmatu" class="konfirmatu"></span>
+				<tr><td align="right">*Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30" required placeholder="ADB:ikasle123@ikasle.ehu.es" onBlur="postaEgiaztatu()"/></td></tr>
+				<tr><td align="right">*Pasahitza:</td><td><input type="password" name="pasahitza" id="pasahitza" size="30" required onBlur="pasahitzaLuzera()"/></td></tr>
+				<tr><td align="right">*Pasahitza konfirmatu:</td><td><input type="password" name="pasahitza2" id="pasahitza2" size="30" required onBlur="pasahitzaKonprobatu(); return false;"/><br /><span id="konfirmatu" class="konfirmatu"></span>
 </td></tr>
 
-				<tr><td align="right">Telefonoa:</td><td><input type="tel" name="telefonoa" id="telefonoa" size="30"/></td></tr>
-				<tr><td align="right">Espezialitatea:</td><td>   
-					<select name="Espezialitatea">    
-						<option value="software" selected="selected">Software Ingenieritza</option>
+				<tr><td align="right">*Telefonoa:</td><td><input type="tel" name="telefonoa" id="telefonoa" size="30" required onBlur="telefonoaKonprobatu()"/></td></tr>
+				<tr><td align="right">*Espezialitatea:</td><td>   
+					<select name="Espezialitatea" >    
+						<option value="software">Software Ingenieritza</option>
 						<option value="hardware">Konputagailuen Ingenieritza</option>
 						<option value="konputazioa">Konputazioa</option>
+						<option value="Besterik" selected>Besterik</option>
+
 						</select>
 				</td></tr>
 				<tr><td colspan="2" align="right">Interesa duzun teknologiak eta herremintak:</td></tr>
@@ -109,9 +105,12 @@ null;
 					<input type="checkbox" name="interesa" value="PHP" />PHP<br />
 					<input type="checkbox" name="interesa" value="CSS" />CSS<br />
 					<input type="checkbox" name="interesa" value="HTML" />HTML<br />
-			
+		
 				</td>
 				</tr>
+				<tr><td align="right">Besterik?</td><td></td></tr>
+                <tr><td colspan="2"><textarea id="interesak" rows="6" cols="70" ></textarea></td></tr>
+
 				<tr> <td colspan="2">
 					
 								<div align="center">
