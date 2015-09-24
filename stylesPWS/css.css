@@ -10,6 +10,8 @@ body {
 	margin-right:auto;
 	background-color:#999;
 	font-family: Arial, Helvetica, sans-serif;
+	margin-bottom:0px;
+	margin-top:0px;
 }
 #banner {
 	margin-left:auto;
@@ -85,17 +87,38 @@ body {
 	float:none;
 	margin-left:auto;
 	margin-right:auto;
-	width:800px;
+	width:600px;
 	height:auto;
 }
 textarea {
     resize: none;
+}
+#taula {
+	-webkit-border-radius: 10px 10px;
+    -moz-border-radius: 10px 10px;
+	border-radius: 10px 10px;
+	padding:20px;
+	border:1px solid #151515;
+	margin-top:40px;
 }
 #taula td {
 	padding-left:20px;
 	padding-right:20px;
 }
 #taula th {
-	padding:20px;
+	background-color:#151515;
+	border:1px solid #151515;
 	color:#FFFFFF;
+	-webkit-border-radius: 10px 10px;
+    -moz-border-radius: 10px 10px;
+	border-radius: 10px 10px;
+	padding:20px;
+}
+#bannerOina {
+	margin-left:auto;
+	margin-right:auto;
+	width:100%;
+	height:100px;
+	background-color:#741822;
+	clear:both;
 }
