@@ -29,6 +29,7 @@ return true;
 			
 			//	alert('"' + postaJasotakoa + '"  posta, EZ DA ehu-ko ikasle baten posta') 
 			document.getElementById("posta").style.backgroundColor = "#ff6666";
+			document.getElementById("posta").focus();
 			return false;
 				}
 		}
@@ -48,6 +49,7 @@ return true;
         pass2.style.backgroundColor = "#ff6666";
         mezua.style.color = "#ff6666";
         mezua.innerHTML = "Pasahitzek EZ dute bat egiten";
+        pass2.focus();
         return false;
     }
 
@@ -60,6 +62,7 @@ return true;
 			return true;
 		}else{
 			elementu.style.backgroundColor = "#ff6666";
+			elementu.focus();
 			return false;
 		}
 	}
@@ -81,16 +84,19 @@ return true;
 			return true;
 		}else{
 			IzenaElementu.style.backgroundColor = "#ff6666";
+			IzenaElementu.focus();
 			return false;
 		}
 	}
 	
 	
 	function guztiak(){
-		izenaKonrprobatu();
-		postaEgiaztatu();
-		pasahitzaKonprobatu();
-		telefonoaKonprobatu();
+		if(izenaKonrprobatu() && postaEgiaztatu() && pasahitzaKonprobatu() && telefonoaKonprobatu()){
+			return true;
+		}else{
+			return false;
+		}
+		
 	}
 	
 	
@@ -105,7 +111,7 @@ return true;
     <div class="edukiera">
 	    <!-- action duen etiketa aktibatuko dugu php orria sortutakoan-->
 		<!--<form method="post" action="igorriSingUp.php" id="erregistro" name="erregistro" onSubmit="guztiak()">-->
-		<form method="post" id="erregistro" name="erregistro" onSubmit="guztiak(); return false;">
+		<form method="post" action="igorriSingUp.php" id="erregistro" name="erregistro" onSubmit="return guztiak();">
 
 			<table id="taula" width="300" border="0" cellspacing="20">
             	<th bgcolor="#330000" colspan="2">Izena Eman</th>
