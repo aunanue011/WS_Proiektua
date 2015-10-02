@@ -111,7 +111,7 @@ return true;
     <div class="edukiera">
 	    <!-- action duen etiketa aktibatuko dugu php orria sortutakoan-->
 		<!--<form method="post" action="igorriSingUp.php" id="erregistro" name="erregistro" onSubmit="guztiak()">-->
-		<form method="post" action="igorriSingUp.php" id="erregistro" name="erregistro" onSubmit="return guztiak();">
+		<form method="post" action="erregistratu.php" id="erregistro" name="erregistro" onSubmit="return guztiak();">
 
 			<table id="taula" width="300" border="0" cellspacing="20">
             	<th bgcolor="#330000" colspan="2">Izena Eman</th>
@@ -124,7 +124,7 @@ return true;
 
 				<tr><td align="right">*Telefonoa:</td><td><input type="tel" name="telefonoa" id="telefonoa" size="30" required/></td></tr>
 				<tr><td align="right">*Espezialitatea:</td><td>   
-					<select name="Espezialitatea" >    
+					<select name="espezialitatea" id="espezialitatea">    
 						<option value="software">Software Ingenieritza</option>
 						<option value="hardware">Konputagailuen Ingenieritza</option>
 						<option value="konputazioa">Konputazioa</option>
@@ -137,14 +137,14 @@ return true;
 					<td></td>
 				<td  align=left>
 					
-					<input type="checkbox" name="interesa" value="PHP" />PHP<br />
-					<input type="checkbox" name="interesa" value="CSS" />CSS<br />
-					<input type="checkbox" name="interesa" value="HTML" />HTML<br />
+					<input type="checkbox" name="interesa[]" value="PHP" />PHP<br />
+					<input type="checkbox" name="interesa[]" value="CSS" />CSS<br />
+					<input type="checkbox" name="interesa[]" value="HTML" />HTML<br />
 		
 				</td>
 				</tr>
 				<tr><td align="right">Besterik?</td><td></td></tr>
-                <tr><td colspan="2"><textarea id="interesak" rows="6" cols="70" ></textarea></td></tr>
+                <tr><td colspan="2"><textarea id="besterik" name="besterik" rows="6" cols="70" ></textarea></td></tr>
 
 				<tr> <td colspan="2">
 					
