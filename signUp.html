@@ -89,9 +89,22 @@ return true;
 		}
 	}
 	
+	function tamainaKonprobatu(){
+		var input = document.getElementById('argazkia');
+		var file = input.files[0];
+		
+		if(file.size>5000000){
+			alert("Argazki andiegia, gehienez 5MB.")
+			return false;
+		}else{
+			return true;
+		}
+       
+		
+	}
 	
 	function guztiak(){
-		if(izenaKonrprobatu() && postaEgiaztatu() && pasahitzaKonprobatu() && telefonoaKonprobatu()){
+		if(izenaKonrprobatu() && postaEgiaztatu() && pasahitzaKonprobatu() && telefonoaKonprobatu()&&tamainaKonprobatu()){
 			return true;
 		}else{
 			return false;
@@ -143,7 +156,7 @@ function argazkiaAurreikusi(fitxategiBox) {
 			<table id="taula" width="300" border="0" cellspacing="20">
             	<th bgcolor="#330000" colspan="2">Izena Eman</th>
 				<tr><td align="right">*Izen abizenak:</td><td><input type="text" name="izena" id="izena" size="30" required/></td></tr>
-				<tr><td align="right">Argazkia:</td><td><input type="file" name="argazkia" id="argazkia" size="30" onchange="argazkiaAurreikusi(this)"/>
+				<tr><td align="right">Argazkia:</td><td><input type="file" accept="image/*" name="argazkia" id="argazkia" size="30" onchange="argazkiaAurreikusi(this)"/>
 					<img id="aurreikusi" src="#"/ style="display: none" width="120px" height="150px">
 				</td></tr>
 				<tr><td align="right">*Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30" required placeholder="ADB:ikasle123@ikasle.ehu.es" /></td></tr>

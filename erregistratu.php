@@ -37,15 +37,22 @@ if($_POST['espezialitatea']=="Besterik"){
 	$espezialitatea = $_POST['espezialitatea'];
 	
 }
-$interesa = $_POST['interesa'];
+
+$guztiak = "";
+if (isset($_POST['interesa'])) {
+
+    $interesa = $_POST['interesa'];
+    foreach($interesa as $result) {
+	$guztiak.= $result . ';';
+}
+
+} 
+
 $besterik = $_POST['besterik'];
 
 
-$guztiak = "";
 
-foreach($interesa as $result) {
-	$guztiak.= $result . ';';
-}
+
 
 
 $fitxategiEdukia =null;
