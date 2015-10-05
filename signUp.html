@@ -99,7 +99,34 @@ return true;
 		
 	}
 	
-	
+	function besterikKonprobatu(selecta)
+{
+    if(selecta){
+        aukera = document.getElementById("espezialitatea").value;
+        if(aukera == "Besterik"){
+            document.getElementById("besteespezialitatea").style.display = "block";
+        }
+        else{
+            document.getElementById("besteespezialitatea").style.display = "none";
+        }
+    }
+    else{
+        document.getElementById("besteespezialitatea").style.display = "none";
+    }
+}
+
+function argazkiaAurreikusi(fitxategiBox) {
+    if (fitxategiBox.files && fitxategiBox.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('aurreikusi').src=e.target.result;
+        }
+        reader.readAsDataURL(fitxategiBox.files[0]);
+                    document.getElementById("aurreikusi").style.display = "block";
+
+    }
+}
+		
     </script>
 
 	</head>
@@ -111,12 +138,14 @@ return true;
     <div class="edukiera">
 	    <!-- action duen etiketa aktibatuko dugu php orria sortutakoan-->
 		<!--<form method="post" action="igorriSingUp.php" id="erregistro" name="erregistro" onSubmit="guztiak()">-->
-		<form method="post" action="erregistratu.php" id="erregistro" name="erregistro" onSubmit="return guztiak();">
+		<form method="post" action="erregistratu.php" id="erregistro" name="erregistro" onSubmit="return guztiak();" enctype="multipart/form-data">
 
 			<table id="taula" width="300" border="0" cellspacing="20">
             	<th bgcolor="#330000" colspan="2">Izena Eman</th>
 				<tr><td align="right">*Izen abizenak:</td><td><input type="text" name="izena" id="izena" size="30" required/></td></tr>
-				<tr><td align="right">Argazkia:</td><td><input type="file" name="argazkia" id="argazkia" size="30"/></td></tr>
+				<tr><td align="right">Argazkia:</td><td><input type="file" name="argazkia" id="argazkia" size="30" onchange="argazkiaAurreikusi(this)"/>
+					<img id="aurreikusi" src="#"/ style="display: none" width="120px" height="150px">
+				</td></tr>
 				<tr><td align="right">*Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30" required placeholder="ADB:ikasle123@ikasle.ehu.es" /></td></tr>
 				<tr><td align="right">*Pasahitza:</td><td><input type="password" name="pasahitza" id="pasahitza" size="30" required onBlur="pasahitzaLuzera()"/></td></tr>
 				<tr><td align="right">*Pasahitza konfirmatu:</td><td><input type="password" name="pasahitza2" id="pasahitza2" size="30" required/><br /><span id="konfirmatu" class="konfirmatu"></span>
@@ -124,13 +153,15 @@ return true;
 
 				<tr><td align="right">*Telefonoa:</td><td><input type="tel" name="telefonoa" id="telefonoa" size="30" required/></td></tr>
 				<tr><td align="right">*Espezialitatea:</td><td>   
-					<select name="espezialitatea" id="espezialitatea">    
-						<option value="software">Software Ingenieritza</option>
+					<select name="espezialitatea" id="espezialitatea" onchange="besterikKonprobatu(this);">    
+						<option value="software" selected>Software Ingenieritza</option>
 						<option value="hardware">Konputagailuen Ingenieritza</option>
 						<option value="konputazioa">Konputazioa</option>
-						<option value="Besterik" selected>Besterik</option>
+						<option value="Besterik" >Besterik</option>
 
 						</select>
+						<br/>
+					<input type="text" placeholder="zein espezialitate?" style="display: none"  id="besteespezialitatea" name="besteespezialitatea"/>
 				</td></tr>
 				<tr><td colspan="2" align="right">Interesa duzun teknologiak eta herremintak:</td></tr>
 				<tr>

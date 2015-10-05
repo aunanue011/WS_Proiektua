@@ -1,21 +1,7 @@
 
 <?php
 
-
-
-
-$dbzerbitzaria = "localhost";
-$dberabiltzailea = "root";
-$dbpass = "";
-$dbizena = "Quiz";
-
-$konexioa = new mysqli($dbzerbitzaria, $dberabiltzailea, $dbpass, $dbizena);
-
-// konexioa konprobatu
-
-if (!$konexioa) {
-	die("Konexioa ezin izan da ezarri.: " . mysqli_connect_error());
-}
+require 'konexioa.php';
 
 
 $sql="SELECT * FROM  erabiltzaileak";
@@ -35,6 +21,6 @@ if($result) {
 echo('</table>');
 echo('</center>');
 
-mysqli_close($konexioa);
+require 'konexioaItxi.php';
 
 ?>
