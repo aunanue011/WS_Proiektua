@@ -14,6 +14,10 @@
 
 require 'konexioa.php';
 
+//fitxategi tamaina MB-ekin konparatzeko, MB 1 zenbat den adierazi eta gero biderketa egingo dugu
+define('MB', 1048576);
+
+
 // ---------------------------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------------------------
@@ -23,23 +27,59 @@ require 'konexioa.php';
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 $email = $_POST['posta'];
+$telefonoa = $_POST['telefonoa'];
+$izena = $_POST['izena'];
+$pasahitza = $_POST['pasahitza'];
 
-if (filter_var($email, FILTER_VALIDATE_EMAIL) == false)
-	{
-echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Posta okerra :(')
+
+		if (!preg_match('/^[a-z]*[0-9]{3}\\@ikasle\\.ehu+(\\.es|\\.eus)$/', $email))
+{
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Posta formatu okerra.')
     window.location.href='signUp.html';
     </SCRIPT>");
-	}
+}else{
+
+		if (!preg_match('/^[0-9]{9}$/', $telefonoa))
+{
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Telefono formatu okerra.')
+    window.location.href='signUp.html';
+    </SCRIPT>");
+}else{
+
+		if (!preg_match('/^[A-z]+\s+[A-z]+\s+[A-z].*[A-z]$/', $izena))
+{
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Izen Abizen formatu okerra.')
+    window.location.href='signUp.html';
+    </SCRIPT>");
+}		
+else{
+	if (strlen($pasahitza)<6)
+{
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Pasahitz luzera okerra.')
+    window.location.href='signUp.html';
+    </SCRIPT>");
+}		
+else{
+	
+if ($_FILES['argazkia']['size'] > 5*MB){
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Argazki tamaina okerra.')
+    window.location.href='signUp.html';
+    </SCRIPT>");
+}
+
+
   else
 	{
-	$izena = $_POST['izena'];
 
 	// $argazkia = $_POST['argazkia'];
 
 	$posta = $_POST['posta'];
-	$pasahitza = $_POST['pasahitza'];
-	$telefonoa = $_POST['telefonoa'];
+	
 	if ($_POST['espezialitatea'] == "Besterik")
 		{
 		$espezialitatea = $_POST['besteespezialitatea'];
@@ -91,5 +131,8 @@ VALUES ('$izena', '$posta', '$pasahitza','$telefonoa','$espezialitatea', '$guzti
 	require 'konexioaItxi.php';
 
 	}
-
+}
+}	
+}
+}
 ?>
