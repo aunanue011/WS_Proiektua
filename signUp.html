@@ -145,18 +145,18 @@ function argazkiaAurreikusi(fitxategiBox) {
 	</head>
 	
     <body>
-    <div id="banner">
-    </div>
+
     
     <div class="edukiera">
+
 	    <!-- action duen etiketa aktibatuko dugu php orria sortutakoan-->
 		<!--<form method="post" action="igorriSingUp.php" id="erregistro" name="erregistro" onSubmit="guztiak()">-->
 		<form method="post" action="erregistratu.php" id="erregistro" name="erregistro" onSubmit="return guztiak();" enctype="multipart/form-data">
 
 			<table id="taula" width="300" border="0" cellspacing="20">
-            	<th bgcolor="#330000" colspan="2">Izena Eman</th>
+            	<th colspan="2">Izena Eman</th>
 				<tr><td align="right">*Izen abizenak:</td><td><input type="text" name="izena" id="izena" size="30" required/></td></tr>
-				<tr><td align="right">Argazkia:</td><td><input type="file" accept="image/*" name="argazkia" id="argazkia" size="30" onchange="argazkiaAurreikusi(this)"/>
+				<tr><td align="right">Argazkia:</td><td><input type="file" accept="image/*" name="argazkia" id="argazkia" size="30" onChange="argazkiaAurreikusi(this)"/>
 					<img id="aurreikusi" src="#"/ style="display: none" width="120px" height="150px">
 				</td></tr>
 				<tr><td align="right">*Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30" required placeholder="ADB:ikasle123@ikasle.ehu.es" /></td></tr>
@@ -166,7 +166,7 @@ function argazkiaAurreikusi(fitxategiBox) {
 
 				<tr><td align="right">*Telefonoa:</td><td><input type="tel" name="telefonoa" id="telefonoa" size="30" required/></td></tr>
 				<tr><td align="right">*Espezialitatea:</td><td>   
-					<select name="espezialitatea" id="espezialitatea" onchange="besterikKonprobatu(this);">    
+					<select name="espezialitatea" id="espezialitatea" onChange="besterikKonprobatu(this);">    
 						<option value="software" selected>Software Ingenieritza</option>
 						<option value="hardware">Konputagailuen Ingenieritza</option>
 						<option value="konputazioa">Konputazioa</option>
@@ -181,9 +181,9 @@ function argazkiaAurreikusi(fitxategiBox) {
 					<td></td>
 				<td  align=left>
 					
-					<input type="checkbox" name="interesa[]" value="PHP" />PHP<br />
-					<input type="checkbox" name="interesa[]" value="CSS" />CSS<br />
-					<input type="checkbox" name="interesa[]" value="HTML" />HTML<br />
+					<input type="checkbox" id="check" name="interesa[]" value="PHP" />PHP<br />
+					<input type="checkbox" id="check" name="interesa[]" value="CSS" />CSS<br />
+					<input type="checkbox" id="check" name="interesa[]" value="HTML" />HTML<br />
 		
 				</td>
 				</tr>
@@ -193,7 +193,7 @@ function argazkiaAurreikusi(fitxategiBox) {
 				<tr> <td colspan="2">
 					
 								<div align="center">
-				<input type="submit" value="Bidali" />
+				<input type="submit" value="Bidali" id="bidali"/>
 			<!--	<input type="reset" value="Ezabatu" />-->
 			</div>
 			
@@ -201,13 +201,11 @@ function argazkiaAurreikusi(fitxategiBox) {
 			</table>
 
 		</form>
+        <br/>
+            <div class="go"><a href="layout.html">Atzera</a></div><br/><br/><br/><br/>
         </div>
-       
-        <div class="atzera">
-        	<a href="layout.html"><img width="50px" height="50px" src="irudiak/atzera.png" alt="Atzera Irudia" ></a>
     	</div>
     
-    	<div id="bannerOina"></div>
 	
     </body>
 </html>
