@@ -1,6 +1,10 @@
 
 <?php
-
+echo '<head>', "\n";
+echo '
+    	<link rel="stylesheet" type="text/css" href="stylesPWS/css.css" />
+';
+echo '</head>', "\n";
 require 'konexioa.php';
 
 

@@ -8,8 +8,7 @@ $result = mysqli_query($konexioa, $sql);
 	$row = mysqli_fetch_assoc($result);
 	if($row!=0 && $pasahitza==$row['pasahitza']){
 		echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('ondo logeatu zara')
-    window.location.href='quiz.html';
+    window.location.href='InsertQuestion.php?logina=$email';
    </SCRIPT>");
 		
 	}
