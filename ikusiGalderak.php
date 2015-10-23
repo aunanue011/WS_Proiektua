@@ -18,8 +18,9 @@ echo '</head>', "\n";
 $sql="SELECT * FROM  galderak";
 $result = mysqli_query($konexioa, $sql);
 echo('<center>');
-echo('<table width="100%" align="center">');
-echo('<tr><th>GALDERAREN ENUNTZIATUA</th><th>ZURE ERANTZUNA</th><th>ZAILTASUNA</th><th></th></tr>');
+echo('<div id="banner"><p> GALDERAK </p> </div>');
+echo('<table id="taula1">');
+echo('<tr><th id="erregistroa">GALDERAREN ENUNTZIATUA</th><th id="erregistroa">ZURE ERANTZUNA</th><th id="erregistroa1">ZAILTASUNA</th><th></th></tr>');
 
 if($result) {
 	while($row = mysqli_fetch_assoc($result)) {
@@ -33,6 +34,9 @@ if($result) {
 } 
 
 echo('</table>');
+echo('<br/><br/>');
+echo('<div class="go"><a href="layout.html">Atzera</a></div>');
+echo('<br/><br/>');
 echo('</center>');
 
 require 'konexioaItxi.php';
