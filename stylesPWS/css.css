@@ -13,6 +13,9 @@ body {
 	margin-bottom:0px;
 	margin-top:40px;
 }
+#main{
+	background-color: #666;
+}
 #banner {
 	margin-left:auto;
 	margin-right:auto;
@@ -102,7 +105,6 @@ textarea {
 	border:1px solid #666;
 	margin-top:40px;
 	background-color:#ddd;
-	margin-left:100px;
 	margin-right:100px;
 }
 #taula td {
@@ -167,8 +169,8 @@ select {
 .go {
 	width: 100px;
 	padding:10px;
-	padding-left:20px;
-	padding-right:20px;
+	padding-left:30px;
+	padding-right:30px;
 	margin-top:50px;
 	background-color:#333;
 	border:1px solid #333;
@@ -178,10 +180,12 @@ select {
 	border-radius: 10px 10px;
 	text-align:center;
 	display:inline;
+	margin-right:20px;
+	
 }
 .go a {
-	font-size:12px;
-	font-weight:bolder;
+	font-size:16px;
+	font-weight:100px;
 	text-decoration: none;
 	text-transform: none;	
 	color:#FFF;
@@ -256,4 +260,32 @@ tr #erregistroa1{
 }
 #taula1 #zuzendu {
 	border:none;
+}
+h2 {
+	background-color:#600;
+	color:#FFF;
+	padding-bottom:20px;
+	padding-top:20px;
+	-webkit-border-radius: 10px 10px;
+    -moz-border-radius: 10px 10px;
+	border-radius: 10px 10px;
+	font-weight:100;
+}
+#celda {
+	margin-top:3px;
+	margin-bottom:5px;
+	padding:7px;
+	background-color:#333;
+	color:#FFFFFF;
+	-webkit-border-radius: 10px 10px;
+    -moz-border-radius: 10px 10px;
+	border-radius: 10px 10px;
+	width:170px;
+}
+
+#celda a {
+	color:#FFFFFF;
+}
+#a{
+	font-size:12px;
 }
