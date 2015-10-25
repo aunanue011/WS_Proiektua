@@ -14,7 +14,15 @@ td {
 
 ';
 echo '</head>', "\n";
+$ordua = date('d/m/Y H:i:s a', time());
+$ip = $_SERVER['REMOTE_ADDR'];
+$sql = "INSERT INTO ekintzak(ekintza_mota,ordua,ip) VALUES ('Galdera ikusi','$ordua', '$ip')";
+if (!mysqli_query($konexioa, $sql))
+		{
+			echo "$sql";
+					echo "Errorea: " . $sql . "<br />" . mysqli_error($konexioa);
 
+			}
 $sql="SELECT * FROM  galderak";
 $result = mysqli_query($konexioa, $sql);
 echo('<center>');
