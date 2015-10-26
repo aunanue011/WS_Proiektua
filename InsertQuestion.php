@@ -20,13 +20,11 @@ echo 'Galdera: <br/>
 		Erantzuna: <br/>
 		<input type="text"	name="erantzuna" id="erantzuna" /><br/><br/>
 		Zailtasun Maila:<br/>
-		<pre align="left">
-		  <input type="radio" name="puntuak" value="1" align="right" checked> 1
-  		  <input type="radio" name="puntuak" value="2" > 2
-   		  <input type="radio" name="puntuak" value="3" > 3
-  		  <input type="radio" name="puntuak" value="4" > 4
+		  <input type="radio" name="puntuak" value="1" align="right" checked> 1 &nbsp; &nbsp; - &nbsp; &nbsp;
+  		  <input type="radio" name="puntuak" value="2" > 2 &nbsp; &nbsp; - &nbsp; &nbsp;
+   		  <input type="radio" name="puntuak" value="3" > 3 &nbsp; &nbsp; - &nbsp; &nbsp;
+  		  <input type="radio" name="puntuak" value="4" > 4 &nbsp; &nbsp; - &nbsp; &nbsp;
   		  <input type="radio" name="puntuak" value="5" > 5
-  		  </pre>
 <br/><br/>
     <input type="hidden" name="logina" value="'.$_GET['logina'].'">
     <input type="hidden" name="ida" value="'.$_GET['ida'].'">
