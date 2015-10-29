@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<assessmentItems>
+  <assessmentItem complexity="3">
+    <itemBody>
+      <element>Amaitu esaldia: Nothing else ....</element>
+    </itemBody>
+    <correctResponse>
+      <value>matters</value>
+    </correctResponse>
+  </assessmentItem>
+</assessmentItems>

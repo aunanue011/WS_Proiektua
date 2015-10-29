@@ -30,9 +30,8 @@ if (!mysqli_query($konexioa, $sql))
 		}
 
 	require 'konexioaItxi.php';
+	
+	require 'xmlGorde.php';
 
-	
-	
-	
 	
 	?>
