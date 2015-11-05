@@ -22,13 +22,8 @@ if (!mysqli_query($konexioa, $sql))
 			
 		echo "Galdera ondo erregistratua";
 		echo ("<br/>");
-		echo ("<a href=insertQuestion.php?logina=$logina&ida=$ida>Galdera gehiago gehitu</a>");
-		echo ("<br/>");
-		echo ("<br/>");
-		echo ("<a href=galderak.xml>xml fitxategia ikusi</a>");
-		echo ("<br/>");
-		echo ("<br/>");
-		echo ("<a href=layout.html>Orri nagusira bueltatu</a>");
+		echo ("<a href=galderak.xml class='ikusi'>xml fitxategia ikusi</a>");
+
 
 		}
 	  else

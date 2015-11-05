@@ -288,6 +288,37 @@ h2 {
 	font-size:12px;
 }
 
+.ikusi {
+	padding-left:30px;
+	padding-right:30px;
+	margin-top:50px;
+	background-color:#333;
+	border:1px solid #333;
+	color:#FFF;
+	-webkit-border-radius: 10px 10px;
+    -moz-border-radius: 10px 10px;
+	border-radius: 10px 10px;
+	text-align:center;
+	display:inline;
+	margin-right:20px;
+	
+}
+.ikusi a{
+	font-size:16px;
+	font-weight:100px;
+	text-decoration: none;
+	text-transform: none;	
+	color:#FFF;
+}
+.ikusi a:hover{
+	text-decoration: underline;
+	text-transform: none;	
+}
+.ikusi a:visited{
+	text-decoration: none;
+	text-transform: none;
+}
+
 input[type=radio]{
   display          : inline-block;
   width            : 0.875em;

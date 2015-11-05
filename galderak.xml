@@ -17,4 +17,92 @@
       <value>matters</value>
     </correctResponse>
   </assessmentItem>
+  <assessmentItem complexity="">
+    <itemBody>
+      <element/>
+    </itemBody>
+    <correctResponse>
+      <value/>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="c">
+    <itemBody>
+      <element>a</element>
+    </itemBody>
+    <correctResponse>
+      <value>b</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="1">
+    <itemBody>
+      <element>Galdera proba</element>
+    </itemBody>
+    <correctResponse>
+      <value>Erantzun proba</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="1">
+    <itemBody>
+      <element>Galdera proba2</element>
+    </itemBody>
+    <correctResponse>
+      <value>2Erantzun proba</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="1">
+    <itemBody>
+      <element>22</element>
+    </itemBody>
+    <correctResponse>
+      <value>22</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="1">
+    <itemBody>
+      <element>22</element>
+    </itemBody>
+    <correctResponse>
+      <value>22</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="1">
+    <itemBody>
+      <element>22</element>
+    </itemBody>
+    <correctResponse>
+      <value>22</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="1">
+    <itemBody>
+      <element>111</element>
+    </itemBody>
+    <correctResponse>
+      <value>111</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="1">
+    <itemBody>
+      <element>qwerty</element>
+    </itemBody>
+    <correctResponse>
+      <value>reqwe</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="1">
+    <itemBody>
+      <element>1212</element>
+    </itemBody>
+    <correctResponse>
+      <value>2121</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="1">
+    <itemBody>
+      <element>1212</element>
+    </itemBody>
+    <correctResponse>
+      <value>2121</value>
+    </correctResponse>
+  </assessmentItem>
 </assessmentItems>
