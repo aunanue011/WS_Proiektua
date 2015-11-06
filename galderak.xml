@@ -105,4 +105,28 @@
       <value>2121</value>
     </correctResponse>
   </assessmentItem>
+  <assessmentItem complexity="1">
+    <itemBody>
+      <element>Ene es mala pecora?</element>
+    </itemBody>
+    <correctResponse>
+      <value>sep</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="1">
+    <itemBody>
+      <element>ene es mala?</element>
+    </itemBody>
+    <correctResponse>
+      <value>yeah</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="5">
+    <itemBody>
+      <element>yiyi</element>
+    </itemBody>
+    <correctResponse>
+      <value>yeah</value>
+    </correctResponse>
+  </assessmentItem>
 </assessmentItems>
