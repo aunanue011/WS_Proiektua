@@ -49,7 +49,7 @@ function galderaTxertatu() {
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   var a = document.getElementById("galdera").value;
    var b = document.getElementById("erantzuna").value;
-   var c = document.getElementById("puntuak").value;
+   var c = document.querySelector(\'input[name = "puntuak"]:checked\').value;
    var d = document.getElementById("logina").value;
    var e = document.getElementById("ida").value;
   xmlhttp.send("galdera="+a+"&erantzuna="+b+"&puntuak="+c+"&logina="+d+"&ida="+e);
