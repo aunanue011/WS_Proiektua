@@ -129,4 +129,20 @@
       <value>yeah</value>
     </correctResponse>
   </assessmentItem>
+  <assessmentItem complexity="4">
+    <itemBody>
+      <element>probababab</element>
+    </itemBody>
+    <correctResponse>
+      <value>asd</value>
+    </correctResponse>
+  </assessmentItem>
+  <assessmentItem complexity="3">
+    <itemBody>
+      <element>galdera</element>
+    </itemBody>
+    <correctResponse>
+      <value>paraa</value>
+    </correctResponse>
+  </assessmentItem>
 </assessmentItems>

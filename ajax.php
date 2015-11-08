@@ -1,9 +1,10 @@
 <?php
 	
 	include 'konexioa.php';
-	$postaHelbidea = intval($_GET['eposta']);
+	$postaHelbidea = $_GET['eposta'];
 
-	$sql="SELECT * FROM  galderak where posta = ".$postaHelbidea;
+	$sql="SELECT * FROM  galderak where posta = '".$postaHelbidea."';";
+	//echo($sql);
 $result = mysqli_query($konexioa, $sql);
 echo('<center>');
 //echo('<div id="banner"><p> NIRE GALDERAK </p> </div>');

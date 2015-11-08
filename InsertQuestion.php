@@ -33,6 +33,24 @@ function nireGalderakIkusi(posta) {
   
 }
 
+function kontatuGalderak() {
+	var posta= "'.$_GET["logina"].'";
+
+
+  if (window.XMLHttpRequest) {
+    xmlhttp=new XMLHttpRequest();
+  }
+  
+    xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("kontadorea").innerHTML=xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("GET","handlingQuizzes.php?eposta="+posta,true);
+  xmlhttp.send();
+  
+}
+
 function galderaTxertatu() {
 	    document.getElementById("niregalderak").innerHTML="";
 
@@ -56,12 +74,12 @@ function galderaTxertatu() {
   //alert("galdera="+a+"&erantzuna="+b+"&puntuak="+c+"&logina="+d+"&ida="+e);
 }
 
-
 </script>
 
 ';
 echo '</head>', "\n";
 echo '<body>', "\n";
+echo '<div name="kontadorea" id="kontadorea"></div>';
 
 echo '<form method="post" action="galderaGorde.php" id="galderaGehitu" name="galderaGehitu" enctype="multipart/form-data">';
 
@@ -92,6 +110,11 @@ echo '<div name="niregalderak" id="niregalderak"></div>';
 echo '<div name="txertaketa" id="txertaketa"></div>';
 echo '<br/><br/><br/>';
 echo '<div class="go"><a href="layout.html">Atzera</a></div> </body>';
+echo '<script language=javascript>kontatuGalderak();
+setInterval(function(){
+kontatuGalderak();
+    },5000);
+</script>';
 echo '</html>';
 	
 	
