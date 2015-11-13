@@ -9,4 +9,5 @@ $result = $client->call('comprobar', 'proba@ikasle.ehu.es');
 //print_r($result);
 //echo $client->request . "\n";
 echo $client->response . "\n";
+//echo $result;
 ?>
