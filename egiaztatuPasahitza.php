@@ -7,18 +7,23 @@ $server    = new soap_server;
 //$server->wsdl->schemaTargetNamespace = $namespace;
 $server->configureWSDL('Pasahitza Konprobatu', $namespace);
 
-$server->register('konprobatu');
 
-function konprobatu($posta)
+
+function konprobatu($pass)
 {
-    if( strpos(file_get_contents("./toppasswords.txt"),$posta) !== false) {
+	
+    if( strpos(file_get_contents("./toppasswords.txt"),$pass) !== false) {
 	    
         return "BALIOGABEA";
     }else{
 	    return "BALIOZKOA";
     }
 }
+
+$server->register('konprobatu',array("pass" => "xsd:string"),array("return" => "xsd:string"),"Pasahitza");
+
 if ( !isset( $HTTP_RAW_POST_DATA ) ) $HTTP_RAW_POST_DATA =file_get_contents( 'php://input' );
 $server->service($HTTP_RAW_POST_DATA);
+
 exit();
 ?>
