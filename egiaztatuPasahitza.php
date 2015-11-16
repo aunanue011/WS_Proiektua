@@ -11,12 +11,18 @@ $server->configureWSDL('Pasahitza_Konprobatu',$namespace);
 
 function konprobatu($pass)
 {
-    if( strpos(file_get_contents("./toppasswords.txt"),$pass) !== false) {
-	    
-        return "BALIOGABEA";
-    }else{
-	    return "BALIOZKOA";
+$handle = @fopen('./toppasswords.txt', "r");
+if ($handle) {
+  while (!feof($handle)) {
+    $entry_array = fgets($handle);
+    if ($entry_array == $pass) {
+      return "BALIOGABEA";
+      }
     }
+  fclose($handle);
+  }
+return "BALIODUNA";
+
 }
 
 $server->register('konprobatu',array("pass"=>"xsd:string"),array("return"=>"xsd:string"),"Pasahitza");
