@@ -7629,6 +7629,7 @@ class nusoap_client extends nusoap_base  {
 					return false;
 				} else {
 					$this->debug('got response, length='. strlen($this->responseData).' type='.$http->incoming_headers['content-type']);
+					$this->responseData = trim($this->responseData);
 					return $this->parseResponse($http->incoming_headers, $this->responseData);
 				}
 			break;
