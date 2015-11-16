@@ -1,5 +1,5 @@
 <?php
-require_once('nusoap/lib/nusoap.php');
+require_once("nusoap/lib/nusoap.php");
 function bezeroa($posta){
 $client = new nusoap_client('http://sw14.hol.es/ServiciosWeb/comprobarmatricula.php',false);
 $client->soap_defencoding = 'UTF-8';

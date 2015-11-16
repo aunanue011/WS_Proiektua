@@ -1,12 +1,11 @@
 <?php
-require_once('nusoap/lib/nusoap.php');
-function bezeroa($pass){
-$client = new nusoap_client('egiaztatuPasahitza.php',false);
+require_once("nusoap/lib/nusoap.php");
+$client = new nusoap_client('http://localhost/webSistemak/WS_Proiektua/egiaztatuPasahitza.php?wsdl');
 $client->soap_defencoding = 'UTF-8';
 $client->decode_utf8 = false;
-$result = $client->call("konprobatu", "123123");
+$result = $client->call("konprobatu",array('pass'=>'123123'));
 //echo $client->debug_str;
-//echo $client->getError() . "\n";
+echo $client->getError() . "\n";
 //print_r($result);
 //echo $client->request . "\n";
 //echo $client->response . "\n";
@@ -16,7 +15,7 @@ $result = $client->call("konprobatu", "123123");
 //}else{
 //return "Bai";
 //}
-echo($client);
-echo($result);
-}
+//echo($client);
+print_r($result);
+
 ?>
