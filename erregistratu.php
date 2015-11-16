@@ -13,6 +13,7 @@
 // $dbizena = "u396496563_quiz";
 
 require 'konexioa.php';
+require_once('soapBezeroa.php');
 
 //fitxategi tamaina MB-ekin konparatzeko, MB 1 zenbat den adierazi eta gero biderketa egingo dugu
 define('MB', 1048576);
@@ -30,6 +31,18 @@ $email = $_POST['posta'];
 $telefonoa = $_POST['telefonoa'];
 $izena = $_POST['izena'];
 $pasahitza = $_POST['pasahitza'];
+$soap = bezeroa($email);
+
+if($soap=="Ez"){
+		echo '<script language="javascript">';
+echo 'alert("Ez zaude irakasgaian matrikulatua.");';
+echo 'window.location = "signUp.html";';
+echo '</script>';
+//header("Location: layout.html");
+
+
+}else{
+
 
 
 		if (!preg_match('/^[a-z]*[0-9]{3}\\@ikasle\\.ehu+(\\.es|\\.eus)$/', $email))
@@ -133,6 +146,7 @@ VALUES ('$izena', '$posta', '$pasahitza','$telefonoa','$espezialitatea', '$guzti
 	}
 }
 }	
+}
 }
 }
 ?>
