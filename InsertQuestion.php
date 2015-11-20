@@ -1,5 +1,5 @@
 <?php
-	
+	require 'sesion.php';
 	//HTML egitura zuzena mantentzeko.
 echo '<html>', "\n";
 echo '<head>', "\n";
@@ -34,7 +34,7 @@ function nireGalderakIkusi(posta) {
 }
 
 function kontatuGalderak() {
-	var posta= "'.$_GET["logina"].'";
+	var posta= "'.$_SESSION["posta"].'";
 
 
   if (window.XMLHttpRequest) {
@@ -79,6 +79,11 @@ function galderaTxertatu() {
 ';
 echo '</head>', "\n";
 echo '<body>', "\n";
+echo '<div align="right"> 
+<form method="post" action="logout.php" id="logout" name="logout" enctype="multipart/form-data">
+'.
+$_SESSION["login_user"].' barruan da.&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="ikusi" name="lgout" value="Deskonektatu" />
+</form></div><br/><br/>';
 echo '<div name="kontadorea" id="kontadorea"></div>';
 
 echo '<form method="post" action="galderaGorde.php" id="galderaGehitu" name="galderaGehitu" enctype="multipart/form-data">';
@@ -94,10 +99,10 @@ echo 'Galdera: <br/>
   		  <input type="radio" name="puntuak" id="puntuak" value="4" > 4 &nbsp; &nbsp; - &nbsp; &nbsp;
   		  <input type="radio" name="puntuak" id="puntuak" value="5" > 5
 <br/><br/>
-    <input type="hidden" name="logina" id ="logina" value="'.$_GET['logina'].'">
-    <input type="hidden" name="ida" id="ida" value="'.$_GET['ida'].'">
+    <input type="hidden" name="logina" id ="logina" value="'.$_SESSION["posta"].'">
+    <input type="hidden" name="ida" id="ida" value="'.$_SESSION["ida"].'">
         <input type="button" class="ikusi" name="txertatu" value="Galdera Txertatu" onClick="galderaTxertatu()">    
-    <input type="button" class="ikusi" name="gikusi" value=" Nire galderak ikusi" onClick="nireGalderakIkusi(\''.$_GET["logina"].'\')"> ';
+    <input type="button" class="ikusi" name="gikusi" value=" Nire galderak ikusi" onClick="nireGalderakIkusi(\''.$_SESSION["posta"].'\')"> ';
 
 
 

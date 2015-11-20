@@ -36,7 +36,7 @@ if($result) {
 
 		
 		echo('<tr name ="galdera'.$row['kodea'].'" id="galdera'.$row['kodea'].'">');
-		echo '<td>'.$row['galdera'] .'</td>'.'<td><input type="text" name="erantzun'.$row['kodea'].'"</td>'.'<td id="tde">'.$row['zailtasuna'] .'</td><td id="zuzendu"><input type="button" value="ZUZENDU" id="bidali" /></td>';	
+		echo '<td>'.$row['galdera'] .'</td>'.'<td><input type="text" name="erantzun'.$row['kodea'].'" /></td>'.'<td id="tde">'.$row['zailtasuna'] .'</td><td id="zuzendu"><input type="button" value="ZUZENDU" id="bidali" /></td>';	
 		echo('</tr>');
 	}
 } 

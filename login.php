@@ -1,5 +1,6 @@
 <?php
 	require 'konexioa.php';
+	session_start();
 $email = $_POST['posta'];
 	$pasahitza = $_POST['pasahitza'];
 	
@@ -14,35 +15,31 @@ $sql = "INSERT INTO konexioak(eposta, ordua) VALUES ('$email', '$ordua')";
 					echo "Errorea: " . $sql . "<br />" . mysqli_error($konexioa);
 
 		}
+		//sesioa sortu
+				if($row['posta']=='web000@ehu.es'){
+	$_SESSION['mota']="admin";
+	}else{
+	$_SESSION['mota']="user";
+	
+
+}
+$_SESSION['login_user'] = $row['izenabizen'];
+	$_SESSION['posta'] = $row['posta'];
+
+		
 		$sql="SELECT * FROM  konexioak where ordua like '$ordua'";
 $result = mysqli_query($konexioa, $sql);
 	$row = mysqli_fetch_assoc($result);
-$ida=$row['id'];
-		
-		
-		
-		
+			$_SESSION['ida'] = $row['id'];
+			if(	$_SESSION['mota']=="admin"){
+			header("Location: reviewingQuizzes.php");
+			}else{
+			header("Location: insertQuestion.php");
+}
+}
+else{
+				header("Location: login.html");
+
+}
 	require 'konexioaItxi.php';
-		
-		echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.location.href='InsertQuestion.php?logina=$email&ida=$ida';
-   </SCRIPT>");
-		
-	}
-	else{
-			require 'konexioaItxi.php';
-
-		echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Erabiltzaile eta pasahitza okerrak. Sahiatu berriro')
-    window.location.href='login.html';
-    </SCRIPT>");
-	}
-
-	
-	
-
-	
-
-	
 ?>
-	
