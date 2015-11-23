@@ -33,7 +33,7 @@ $izena = $_POST['izena'];
 $pasahitza = $_POST['pasahitza'];
 $soap = bezeroa($email);
 
-if($soap=="Ez"){
+if($soap=="EZ"){
 		echo '<script language="javascript">';
 echo 'alert("Ez zaude irakasgaian matrikulatua.");';
 echo 'window.location = "signUp.html";';
