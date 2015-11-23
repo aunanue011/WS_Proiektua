@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<title>Erregistroa</title>
+        <link rel='stylesheet' type='text/css' href='stylesPWS/css.css' />
+		
+		
+		<script type="text/javascript">
+			
+				function pasahitzaLuzera(){
+		var elementu = document.getElementById("pasahitza");
+		var pass1= document.getElementById("pasahitza");
+		if(pass1.value.length<"6"){
+			alert("Pasahitza gutxienez 6 karakterekoa izan behar du.");
+		}
+		
+	}
+			
+			function postaEgiaztatu() {
+			var postaJasotakoa= document.getElementById("posta").value;
+			adierazpenErregularra = new RegExp(/^[a-z]*[0-9]{3}\@ikasle\.ehu+(\.es|\.eus)$/);
+			if (adierazpenErregularra.test(postaJasotakoa)){
+			
+			document.getElementById("posta").style.backgroundColor = "#66cc66";
+
+return true;
+}
+			else{
+			
+			//	alert('"' + postaJasotakoa + '"  posta, EZ DA ehu-ko ikasle baten posta') 
+			document.getElementById("posta").style.backgroundColor = "#ff6666";
+			document.getElementById("posta").focus();
+			return false;
+				}
+		}
+		
+		
+		function pasahitzaKonprobatu(){
+					var pass1= document.getElementById("pasahitza");
+					var pass2= document.getElementById("pasahitza2");
+					var mezua = document.getElementById('konfirmatu');
+	if(pass1.value == pass2.value && pass1.value.length>="6"){
+        pass2.style.backgroundColor = "#66cc66";
+        mezua.style.color = "#66cc66";
+        mezua.innerHTML = "Pasahitzek bat egiten dute"
+        return true;
+    }else{
+       
+        pass2.style.backgroundColor = "#ff6666";
+        mezua.style.color = "#ff6666";
+        mezua.innerHTML = "Pasahitzek EZ dute bat egiten";
+        pass2.focus();
+        return false;
+    }
+    }
+	
+	function guztiak(){
+		if(ipostaEgiaztatu() && pasahitzaKonprobatu()){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
+	
+	
+    </script>
+
+	</head>
+	
+    <body>
+
+    
+    <div class="edukiera">
+		<form method="post" action="berreskuratu.php" id="erregistro" name="erregistro" onSubmit="return guztiak();" enctype="multipart/form-data">
+
+			<table id="taula" width="300" border="0" cellspacing="20">
+      				<tr><td align="right">*Posta elektronikoa:</td><td><input type="email" name="posta" id="posta" size="30" required placeholder="ADB:ikasle123@ikasle.ehu.es" /></td></tr>
+				<tr><td align="right">*Pasahitza:</td><td><input type="password" name="pasahitza" id="pasahitza" size="30" required onBlur="pasahitzaLuzera()"/></td></tr>
+				<tr><td align="right">*Pasahitza konfirmatu:</td><td><input type="password" name="pasahitza2" id="pasahitza2" size="30" required/><br /><span id="konfirmatu" class="konfirmatu"></span>
+</td></tr>
+			</table>
+<input type="submit" value="Aldatu pasahitza" />
+		</form>
+        <br/>
+            <div class="go"><a href="layout.html">Atzera</a></div><br/><br/><br/><br/>
+        </div>
+    	</div>
+    
+	
+    </body>
+</html>

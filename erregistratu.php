@@ -127,7 +127,7 @@ if ($_FILES['argazkia']['size'] > 5*MB){
 			$fitxategi = addslashes($fitxategi);
 			}
 		}
-
+$pasahitza = sha1($pasahitza);
 	$sql = "INSERT INTO erabiltzaileak(izenabizen, posta, pasahitza, telefonoa, espezialitatea, interesak, besterik, argazkia)
 VALUES ('$izena', '$posta', '$pasahitza','$telefonoa','$espezialitatea', '$guztiak','$besterik','$fitxategiEdukia')";
 	if (mysqli_query($konexioa, $sql))

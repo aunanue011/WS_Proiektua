@@ -3,7 +3,7 @@
 	session_start();
 $email = $_POST['posta'];
 	$pasahitza = $_POST['pasahitza'];
-	
+	$pasahitza = sha1($pasahitza);
 	$sql="SELECT * FROM  erabiltzaileak where posta like '$email'";
 $result = mysqli_query($konexioa, $sql);
 	$row = mysqli_fetch_assoc($result);
