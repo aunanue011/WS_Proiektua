@@ -14,7 +14,7 @@
 
 require 'konexioa.php';
 require_once('soapBezeroa.php');
-
+require_once('soapProba2.php');
 //fitxategi tamaina MB-ekin konparatzeko, MB 1 zenbat den adierazi eta gero biderketa egingo dugu
 define('MB', 1048576);
 
@@ -42,9 +42,15 @@ echo '</script>';
 
 
 }else{
+	if(pasahitzaSegurua($pasahitza=="BALIOGABEA")){
+				echo '<script language="javascript">';
+echo 'alert("Pasahitza ez da segurua.");';
+echo 'window.location = "signUp.html";';
+echo '</script>';
+	}
+	
 
-
-
+	else{
 		if (!preg_match('/^[a-z]*[0-9]{3}\\@ikasle\\.ehu+(\\.es|\\.eus)$/', $email))
 {
    echo ("<SCRIPT LANGUAGE='JavaScript'>
