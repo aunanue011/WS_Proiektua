@@ -7,6 +7,7 @@ $email = $_POST['posta'];
 	$sql="SELECT * FROM  erabiltzaileak where posta like '$email'";
 $result = mysqli_query($konexioa, $sql);
 	$row = mysqli_fetch_assoc($result);
+
 	if($row!=0 && $pasahitza==$row['pasahitza']){
 		$ordua = date('d/m/Y H:i:s a', time());
 $sql = "INSERT INTO konexioak(eposta, ordua) VALUES ('$email', '$ordua')";
@@ -41,5 +42,6 @@ else{
 				header("Location: login.html");
 
 }
+
 	require 'konexioaItxi.php';
 ?>

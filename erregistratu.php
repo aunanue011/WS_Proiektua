@@ -42,7 +42,7 @@ echo '</script>';
 
 
 }else{
-	if(pasahitzaSegurua($pasahitza=="BALIOGABEA")){
+	if(pasahitzaSegurua($pasahitza)=="BALIOGABEA"){
 				echo '<script language="javascript">';
 echo 'alert("Pasahitza ez da segurua.");';
 echo 'window.location = "signUp.html";';
@@ -152,6 +152,7 @@ VALUES ('$izena', '$posta', '$pasahitza','$telefonoa','$espezialitatea', '$guzti
 	}
 }
 }	
+}
 }
 }
 }
