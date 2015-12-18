@@ -1,159 +1,100 @@
-
 <?php
-
-// LOCALHOST
-// $dbzerbitzaria = "localhost";
-// $dberabiltzailea = "root";
-// $dbpass = "";
-// $dbizena = "Quiz";
-// HOSTINGER
-// $dbzerbitzaria = "mysql.hostinger.es";
-// $dberabiltzailea = "u396496563_ehuws";
-// $dbpass = "wsehuws";
-// $dbizena = "u396496563_quiz";
-
-require 'konexioa.php';
-require_once('soapBezeroa.php');
-require_once('soapProba2.php');
-//fitxategi tamaina MB-ekin konparatzeko, MB 1 zenbat den adierazi eta gero biderketa egingo dugu
-define('MB', 1048576);
-
-
-// ---------------------------------------------------------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------------------------
-
-$email = $_POST['posta'];
-$telefonoa = $_POST['telefonoa'];
-$izena = $_POST['izena'];
-$pasahitza = $_POST['pasahitza'];
-$soap = bezeroa($email);
-
-if($soap=="EZ"){
-		echo '<script language="javascript">';
-echo 'alert("Ez zaude irakasgaian matrikulatua.");';
-echo 'window.location = "signUp.html";';
-echo '</script>';
-//header("Location: layout.html");
-
-
-}else{
-	if(pasahitzaSegurua($pasahitza)=="BALIOGABEA"){
-				echo '<script language="javascript">';
-echo 'alert("Pasahitza ez da segurua.");';
-echo 'window.location = "signUp.html";';
-echo '</script>';
-	}
-	
-
-	else{
-		if (!preg_match('/^[a-z]*[0-9]{3}\\@ikasle\\.ehu+(\\.es|\\.eus)$/', $email))
-{
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Posta formatu okerra.')
-    window.location.href='signUp.html';
-    </SCRIPT>");
-}else{
-
-		if (!preg_match('/^[0-9]{9}$/', $telefonoa))
-{
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Telefono formatu okerra.')
-    window.location.href='signUp.html';
-    </SCRIPT>");
-}else{
-
-		if (!preg_match('/^[A-z]+\s+[A-z]+\s+[A-z].*[A-z]$/', $izena))
-{
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Izen Abizen formatu okerra.')
-    window.location.href='signUp.html';
-    </SCRIPT>");
-}		
-else{
-	if (strlen($pasahitza)<6)
-{
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Pasahitz luzera okerra.')
-    window.location.href='signUp.html';
-    </SCRIPT>");
-}		
-else{
-	
-if ($_FILES['argazkia']['size'] > 5*MB){
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Argazki tamaina okerra.')
-    window.location.href='signUp.html';
-    </SCRIPT>");
-}
-
-
-  else
-	{
-
-	// $argazkia = $_POST['argazkia'];
-
-	$posta = $_POST['posta'];
-	
-	if ($_POST['espezialitatea'] == "Besterik")
-		{
-		$espezialitatea = $_POST['besteespezialitatea'];
-		}
-	  else
-		{
-		$espezialitatea = $_POST['espezialitatea'];
-		}
-
-	$guztiak = "";
-	if (isset($_POST['interesa']))
-		{
-		$interesa = $_POST['interesa'];
-		foreach($interesa as $result)
-			{
-			$guztiak.= $result . ';';
-			}
-		}
-
-	$besterik = $_POST['besterik'];
-	$fitxategiEdukia = null;
-	if ($_FILES['argazkia']['size'] > 0)
-		{
-		$fitxategi = $_FILES['argazkia']['name'];
-		$fitxategiarenIzena = $_FILES['argazkia']['tmp_name'];
-		$fitxategiaIriki = fopen($fitxategiarenIzena, 'r');
-		$fitxategiEdukia = fread($fitxategiaIriki, filesize($fitxategiarenIzena));
-		$fitxategiEdukia = addslashes($fitxategiEdukia);
-		fclose($fitxategiaIriki);
-		if (!get_magic_quotes_gpc())
-			{
-			$fitxategi = addslashes($fitxategi);
-			}
-		}
-$pasahitza = sha1($pasahitza);
-	$sql = "INSERT INTO erabiltzaileak(izenabizen, posta, pasahitza, telefonoa, espezialitatea, interesak, besterik, argazkia)
-VALUES ('$izena', '$posta', '$pasahitza','$telefonoa','$espezialitatea', '$guztiak','$besterik','$fitxategiEdukia')";
-	if (mysqli_query($konexioa, $sql))
-		{
-		echo "Erabiltzailea ondo erregistratua";
-		echo ("<br/>");
-		echo ("<a href=IkusiErabiltzaileak.php>Erabiltzaileak ikusi</a>");
-		}
-	  else
-		{
-		echo "Errorea: " . $sql . "<br />" . mysqli_error($konexioa);
-		}
-
-	require 'konexioaItxi.php';
-
-	}
-}
-}	
-}
-}
-}
+require "sesioak/userSession.php";
+if (konprobatuSaioa("index.php", false)) {
+    header("Location: index.php");
+    exit;
 }
 ?>
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+    <meta charset="UTF-8">
+    <title>Erregistratu</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/formularioak.css">
+
+    <link rel="stylesheet" type="text/css" href="kudeaketa/argazkiak/jquery.fancybox.css">
+    <link rel="stylesheet" type="text/css" href="js/abixuak/dist/sweetalert2.css"/>
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="kudeaketa/argazkiak/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="kudeaketa/argazkiak/helpers/"></script>
+    <script src="js/abixuak/dist/sweetalert2.min.js"></script>
+    <style>
+        body {
+            background: url("img/erregistratuAtzekaldea.jpg" ) no-repeat fixed center center;
+        }
+    </style>
+	<script>
+	function pasahitzaKonprobatu(){
+					var pass1= document.getElementById("password");
+					var pass2= document.getElementById("password2");
+					//var mezua = document.getElementById('konfirmatu');
+	if(pass1.value == pass2.value && pass1.value.length>="6"){
+        pass2.style.backgroundColor = "#66cc66";
+       
+        return true;
+    }else{
+       
+        pass2.style.backgroundColor = "#ff6666";
+       swal({
+                        title: 'PASAHITZ EZBERDINAK EDO MOTZEGIAK',
+                        text: 'Pasahitzek ez dute bat egiten, edo ez dituzte 6 karaktere edo gehiago.',
+                        type: 'error'
+                    },
+                    function () {
+                        return false;
+
+                    });
+        pass2.focus();
+        return false;
+    }
+	}
+	</script>
+</head>
+<body>
+<header style="background: #8A0829">
+    <div class="wrapper">
+        <nav style="float: left;">
+            <a href="index.php" class="login_btn"> Hasiera</a>
+        </nav>
+    </div>
+    <div class="wrapper">
+        <a href="#" class="hamburger"></a>
+        <nav>
+
+            <?php
+            if (isset($_SESSION['posta']) && $_SESSION['posta'] == true) {
+                echo("
+                           <ul>
+                            <li><a href=\"argazkiaIgo.php\">Argazkia Igo</a></li>
+                           </ul>
+                         ");
+                $erab = $_SESSION['izena'].'('. $_SESSION['posta'].')';                     $luz = (strlen($erab) - 15);                     $zuria="";                     for($i =0;$i<$luz;$i++ ){                     $zuria=$zuria."&nbsp";                     }                     $desk = $zuria.'DESKONEKTATU'.$zuria;                     echo("<a style='{display: inline-block}' onmouseover=\"this.innerHTML ='$desk'\" onmouseout=\"this.innerHTML = '$erab'\"  href=\"datuBasea/logout.php\" class=\"login_btn\"  >".$erab."</a>");
+            } else {
+                echo("<a href='login.php' class=\"login_btn\"> Login</a>");
+
+            }
+            ?>
+
+        </nav>
+    </div>
+	
+</header>
+
+<div class="logo"></div>
+<div class="login-block">
+    <h1>Erregistratu</h1>
+    <form action="datuBasea/erabiltzaileaErregistratu.php" method="post" onSubmit="return pasahitzaKonprobatu();" enctype="multipart/form-data">
+    <input type="text" value="" placeholder="Izen Abizenak" id="izenabizen" name="izenabizen"/>
+    <input type="email" value="" placeholder="Posta Helbidea" id="posta" name="posta"/>
+    <input type="password" value="" placeholder="Pasahitza" id="password" name="password" />
+    <input type="password" value="" placeholder="Konfirmatu Pasahitza" id="password2" />
+    <input type="submit" value="Erregistratu"/>
+    </form>
+</div>
+</body>
+</html>
